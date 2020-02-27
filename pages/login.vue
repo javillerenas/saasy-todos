@@ -1,24 +1,24 @@
 <template>
   <v-container>
     <h1>Login</h1>
-    <!-- <UserAuthForm
-      :submitForm="loginUser"
-      :buttonText="LogIn"
-      :hasName="false"
-    /> -->
+
+    <UserAuthForm :submitForm="loginUser" buttonText="LogIn" :hasName="false" />
   </v-container>
 </template>
 
 <script>
-// import UserAuthForm from '@/components/UserAuthForm'
+import UserAuthForm from '@/components/UserAuthForm'
 
 export default {
   components: {
-    // UserAuthForm
+    UserAuthForm
   },
   methods: {
-    loginUser() {
-      alert("You're logged in")
+    loginUser(loginInfo) {
+      console.log('>>> Login Info::: ', loginInfo)
+      this.$auth.loginWith('cognito')
+        .then(data => console.log('>>> LOGGED IN::: ', data))
+        .catch(err => console.error('>>> ERROR::: ', err))
     }
   }
 }

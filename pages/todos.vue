@@ -14,6 +14,7 @@
 import { mapMutations } from 'vuex'
 
 export default {
+  middleware: "todo-auth",
   computed: {
     todos() {
       return this.$store.state.todos.list

@@ -32,9 +32,11 @@
           class="login-button"
           color="primary"
           dark
+          to="/login"
           >Login</v-btn
         >
         <v-btn v-else rounded class="login-button" color="primary" dark
+          @click.prevent="logout"
           >Logout</v-btn
         >
       </v-btn>
@@ -82,8 +84,13 @@ export default {
   },
   computed: {
     authenticated() {
-      // return this.$auth.state.user
-      return false
+      console.log('>>>>>> AUTH :: ', this.$auth?.$state?.user)
+      return this.$auth?.$state?.user
+    }
+  },
+  methods: {
+    logout() {
+      this.$auth.logout();
     }
   }
 }

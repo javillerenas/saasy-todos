@@ -1,10 +1,10 @@
 <template>
   <v-form v-model="valid">
     <v-text-field
-      v-if="hasName"
       v-model="userInfo.name"
       label="Name"
       :rules="[required('name')]"
+      v-if="hasName"
     />
 
     <v-text-field
@@ -30,17 +30,17 @@
 </template>
 
 <script>
-// import validations from '@/utils/validations'
+import validations from '@/utils/validations'
 export default {
   data() {
     return {
       valid: false,
       showPassword: false,
       userInfo: {
-        email: '',
-        password: ''
-      }
-      // ...validations
+        email: 'javr.llerenas@gmail.com',
+        password: '1Demodemo!'
+      },
+      ...validations
     }
   },
   props: ['submitForm', 'buttonText', 'hasName']
