@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import awsconfig from './aws-config.js'
 
 export default {
   mode: 'spa',
@@ -36,6 +37,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/auth'
   ],
   /*
   ** Nuxt.js modules
@@ -49,6 +51,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseUrl: 'http://localhost:3000'
   },
   /*
   ** vuetify module configuration
@@ -79,6 +82,15 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  
+  /**
+   * AUTH with Cognito
+   */
+  auth: {
+    strategies: {
+      cognito: awsconfig,
     }
   }
 }
